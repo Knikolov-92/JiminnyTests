@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jiminny.UITests", "Jiminny.UITests.csproj", "{4EC32CBE-7285-4639-AFFA-5D5FD621B76E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{57FBCA21-8BCC-4D7E-8552-8DD2ED538964}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EC32CBE-7285-4639-AFFA-5D5FD621B76E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EC32CBE-7285-4639-AFFA-5D5FD621B76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EC32CBE-7285-4639-AFFA-5D5FD621B76E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EC32CBE-7285-4639-AFFA-5D5FD621B76E}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F6BDEAC-197F-4063-BA3F-3446A5A4DC16}
+	EndGlobalSection
+EndGlobal
