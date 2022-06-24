@@ -14,8 +14,8 @@ namespace Jiminny.UITests.Steps
         private List<ToDoItem> listOfToDoItems = new();
 
 
-        [Given(@"^User has navigated to the Home page$")]
-        public void GivenUserHasNavigatedToTheHomePage()
+        [Given(@"^Home page is loaded$")]
+        public void HomePageIsLoaded()
         {
             page.NavigateToHomePage();
         }
