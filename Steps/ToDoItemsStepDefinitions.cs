@@ -30,12 +30,18 @@ namespace Jiminny.UITests.Steps
         }
 
         [When(@"^The item at position (\d+) in the list is edited$")]
-        public void TheItemAtPositionNisEdited(int index)
+        public void TheItemAtPositionNisEdited(int itemPosition)
         {
-            var editedItem = page.EditItemInTheToDoList(index);
+            var editedItem = page.EditItemInTheToDoList(itemPosition);
 
             listOfToDoItems.Clear();
             listOfToDoItems.Add(editedItem);
+        }
+
+        [When(@"^The item at position (\d+) in the list is completed")]
+        public void TheItemAtPositionNisCompleted(int itemPosition)
+        {
+            page.CompleteItemInTheToDoList(itemPosition);
         }
 
         [Then(@"^There are no to-do items in the list$")]
@@ -70,6 +76,12 @@ namespace Jiminny.UITests.Steps
         public void TheCounterShowsActiveItems(int numberOfActiveItems)
         {
             page.Validate().ItemsCounterShowsCorrectNumberOfItems(numberOfActiveItems);
-        }        
+        }
+
+        [Then(@"^The item at position (\d+) in the list is marked as 'completed'$")]
+        public void TheItemAtPositionNisMarkedAsCompleted(int itemPosition)
+        {
+            page.Validate().TheItemIsMarkedAsCompleted(itemPosition);
+        }
     }
 }

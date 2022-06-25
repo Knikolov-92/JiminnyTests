@@ -40,6 +40,12 @@ namespace Jiminny.UITests.TestInfrastructure.Pages
             element.Click();
         }
 
+        protected void ClickOn(IWebElement element)
+        {
+            element.WaitForElementToBeClickable();
+            element.Click();
+        }
+
         protected void EnterTextInField(Func<IWebElement> element, string text)
         {
             var field = WebElementUtility.WaitForElementToBeDisplayed(element);

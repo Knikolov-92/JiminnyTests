@@ -17,3 +17,9 @@ Scenario: Edit an active item
 	When 1 item is added to the to-do list
 	And The item at position 0 in the list is edited
 	Then The name of the item is contained in the to-do list
+
+Scenario: Complete an active item
+	When 1 item is added to the to-do list
+	And The item at position 0 in the list is completed
+	Then The item at position 0 in the list is marked as 'completed'
+	And The counter shows 0 active items

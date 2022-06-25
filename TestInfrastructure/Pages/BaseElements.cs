@@ -14,5 +14,10 @@ namespace Jiminny.UITests.TestInfrastructure.Pages
         }
 
         public IWebElement HomePageSection => Driver.FindElementWithExplicitWait(By.XPath("//section[@class='todoapp']"));
+
+        public string GetElementClass(IWebElement element)
+        {
+            return element.GetAttribute("class");
+        }
     }
 }

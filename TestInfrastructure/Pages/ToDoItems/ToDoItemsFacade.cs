@@ -34,6 +34,14 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             return newItem;
         }
 
+        public void CompleteItemInTheToDoList(int itemPosition)
+        {
+            var items = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
+            var item = items.ElementAt(itemPosition);
+
+            ClickOn(Elements.GetItemCheckbox(item));
+        }
+
         private ToDoItem EditItemLabel(IWebElement item)
         {
             var action = new Actions(Browser.Instance.WebDriver);

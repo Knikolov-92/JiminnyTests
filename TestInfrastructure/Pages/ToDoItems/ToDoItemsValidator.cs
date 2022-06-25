@@ -42,5 +42,14 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
 
             Assert.That(doesContain, Is.True, "Item name is not in the list");
         }
+
+        public void TheItemIsMarkedAsCompleted(int itemPosition)
+        {
+            var itemList = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
+            var item = itemList.ElementAt(itemPosition);
+            var className = Elements.GetItemCheckboxClass(item);
+
+            Assert.That(className, Is.EqualTo("todo completed"), "Item name is not marked as 'completed'");
+        }
     }
 }

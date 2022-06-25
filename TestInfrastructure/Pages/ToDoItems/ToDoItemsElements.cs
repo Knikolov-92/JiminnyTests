@@ -23,5 +23,15 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
         {
             return label.FindElement(By.XPath(".//following::input[@class='edit']"));
         }
+
+        public IWebElement GetItemCheckbox(IWebElement label)
+        {
+            return label.FindElement(By.XPath(".//input[@type='checkbox']"));
+        }
+
+        public string GetItemCheckboxClass(IWebElement checkbox)
+        {
+            return GetElementClass(checkbox);
+        }
     }
 }
