@@ -10,9 +10,8 @@ namespace Jiminny.UITests.Steps
     [Binding]
     public sealed class ToDoItemsStepDefinitions
     {
-        private readonly ToDoItemsFacade page = new ToDoItemsFacade();
+        private readonly ToDoItemsFacade page = new();
         private List<ToDoItem> listOfToDoItems = new();
-
 
         [Given(@"^Home page is loaded$")]
         public void HomePageIsLoaded()
@@ -29,7 +28,16 @@ namespace Jiminny.UITests.Steps
             page.AddItemsToTheToDoList(listOfItems);
             listOfToDoItems = listOfItems;
         }
-        
+
+        [When(@"^The item at position (\d+) in the list is edited$")]
+        public void TheItemAtPositionNisEdited(int index)
+        {
+            var editedItem = page.EditItemInTheToDoList(index);
+
+            listOfToDoItems.Clear();
+            listOfToDoItems.Add(editedItem);
+        }
+
         [Then(@"^There are no to-do items in the list$")]
         public void ThereAreNoItemsInTheList()
         {
@@ -55,13 +63,13 @@ namespace Jiminny.UITests.Steps
             var item = listOfToDoItems[0];
 
             page.Validate().TheListContainsItemName(item);
-        }
+        }        
 
         [Then(@"^The counter shows (\d+) active item$")]
         [Then(@"^The counter shows (\d+) active items$")]
         public void TheCounterShowsActiveItems(int numberOfActiveItems)
         {
             page.Validate().ItemsCounterShowsCorrectNumberOfItems(numberOfActiveItems);
-        }
+        }        
     }
 }

@@ -18,5 +18,10 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
         {
             return parent.FindElement(By.XPath(".//label"));
         }
+
+        public IWebElement GetItemLabelInput(IWebElement label)
+        {
+            return label.FindElement(By.XPath(".//following::input[@class='edit']"));
+        }
     }
 }

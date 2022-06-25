@@ -86,7 +86,7 @@ namespace Jiminny.UITests.TestInfrastructure.Helpers
             return element.Invoke();
         }
 
-        public static IEnumerable<IWebElement> WaitForElementToExistInDom(Func<IEnumerable<IWebElement>> elements)
+        public static IEnumerable<IWebElement> WaitForElementsToExistInDom(Func<IEnumerable<IWebElement>> elements)
         {
             var wait = Browser.Instance.Wait;
 

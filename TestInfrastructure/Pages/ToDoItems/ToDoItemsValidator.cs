@@ -30,14 +30,14 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
 
         public void TheListHasItems(int numberOfItems)
         {
-            var elementList = WebElementUtility.WaitForElementToExistInDom(() => Elements.AllItemsList).ToList();
+            var elementList = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList).ToList();
 
             Assert.That(elementList.Count, Is.EqualTo(numberOfItems), "Number of items in the list is not expected");
         }
 
         public void TheListContainsItemName(ToDoItem item)
         {
-            var elementList = WebElementUtility.WaitForElementToExistInDom(() => Elements.AllItemsList);
+            var elementList = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
             bool doesContain = elementList.Any(element => Elements.GetItemLabel(element).Text.Equals(item.Name));
 
             Assert.That(doesContain, Is.True, "Item name is not in the list");

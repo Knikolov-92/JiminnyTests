@@ -1,7 +1,11 @@
-﻿using Jiminny.UITests.TestInfrastructure.Helpers;
+﻿using Faker;
+using Jiminny.UITests.TestInfrastructure.Helpers;
 using Jiminny.UITests.TestInfrastructure.Models;
+using Jiminny.UITests.TestInrastructure.Drivers;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
 {
@@ -19,5 +23,39 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
                 input.SendKeys(Keys.Enter);
             }         
         }
+
+        public ToDoItem EditItemInTheToDoList(int itemPosition)
+        {
+            var items = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
+            var item = items.ElementAt(itemPosition);
+
+            var newItem = EditItemLabel(item);
+
+            return newItem;
+        }
+
+        private ToDoItem EditItemLabel(IWebElement item)
+        {
+            var action = new Actions(Browser.Instance.WebDriver);
+            var newItem = new ToDoItem()
+            {
+                Name = Lorem.Sentence()
+            };
+            var numberOfSymbols = item.Text.Length;
+                        
+            action.DoubleClick(item).Build().Perform();
+            var itemInput = Elements.GetItemLabelInput(item);
+
+            for (int i = 0; i < numberOfSymbols; i++)
+            {
+                itemInput.SendKeys(Keys.Backspace);
+            }            
+            itemInput.SendKeys(newItem.Name);
+            itemInput.SendKeys(Keys.Enter);
+
+            return newItem;
+        }
+
+
     }
 }
