@@ -91,3 +91,16 @@ Scenario: Add 10 items -> complete all -> validate lists
 	And The active-to-do list is empty
 	And The completed-to-do list contains the correct items
 	And The completed-to-do list has 10 items	
+
+Scenario: Add 10 items -> complete all -> clear completed -> validate lists
+	When 10 items are added to the to-do list
+	And All items are marked as completed
+	And The completed items are cleared
+	Then The to-do list is empty
+	And The item counter is not displayed
+
+Scenario: Add 10 items -> delete all -> validate lists
+	When 10 items are added to the to-do list	
+	And The items at positions 0 to 9 in the list are deleted
+	Then The to-do list is empty
+	And The item counter is not displayed

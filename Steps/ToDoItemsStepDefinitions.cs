@@ -50,6 +50,12 @@ namespace Jiminny.UITests.Steps
             page.DeleteItemInTheToDoList(itemPosition);
         }
 
+        [When(@"^The items at positions (\d+) to (\d+) in the list are deleted")]
+        public void TheItemsAtPositionsAreDeleted(int startPosition, int endPosition)
+        {
+            page.DeleteItemsInTheToDoList(startPosition, endPosition);
+        }
+
         [When(@"^The completed items are cleared")]
         public void TheCompletedItemsAreCleared()
         {
