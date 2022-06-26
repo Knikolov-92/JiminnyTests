@@ -83,3 +83,11 @@ Scenario: Add 10 items -> complete first and last items -> validate lists
 	And The completed-to-do list has 2 items
 	And The name of the item at position 0 is contained in the completed-to-do list
 	And The name of the item at position 9 is contained in the completed-to-do list
+
+Scenario: Add 10 items -> complete all -> validate lists
+	When 10 items are added to the to-do list
+	And All items are marked as completed
+	Then The all-to-do list has 10 items
+	And The active-to-do list is empty
+	And The completed-to-do list contains the correct items
+	And The completed-to-do list has 10 items	

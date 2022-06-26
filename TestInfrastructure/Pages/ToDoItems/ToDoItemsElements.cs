@@ -25,6 +25,8 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
 
         public IWebElement ClearCompletedButton => Driver.FindElementWithExplicitWait(By.XPath("//button[@class='clear-completed']"));
 
+        public IWebElement MarkAllCompletedButton => Driver.FindElementWithExplicitWait(By.XPath("//label[@for='toggle-all']"));
+
         public IWebElement GetItemLabel(IWebElement parent)
         {
             return parent.FindElement(By.XPath(".//label"));

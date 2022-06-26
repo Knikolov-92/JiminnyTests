@@ -56,6 +56,12 @@ namespace Jiminny.UITests.Steps
             page.ClearCompletedItems();
         }
 
+        [When(@"^All items are marked as completed")]
+        public void AllItemsAreMarkedAsCompleted()
+        {
+            page.MarkAllItemsAsCompleted();
+        }
+
         [Then(@"^The to-do list is empty$")]
         public void TheToDoListIsEmpty()
         {
@@ -141,6 +147,15 @@ namespace Jiminny.UITests.Steps
             var itemsList = listOfToDoItems;
 
             page.LoadActiveList();
+            page.Validate().TheListContainsTheCorrectItems(itemsList);
+        }
+
+        [Then(@"^The completed-to-do list contains the correct items$")]
+        public void TheCompletedToDoListContainsTheCorrectItems()
+        {
+            var itemsList = listOfToDoItems;
+
+            page.LoadCompletedList();
             page.Validate().TheListContainsTheCorrectItems(itemsList);
         }
     }

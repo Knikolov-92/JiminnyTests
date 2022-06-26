@@ -74,6 +74,11 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             ClickOn(() => Elements.ClearCompletedButton);
         }
 
+        public void MarkAllItemsAsCompleted()
+        {
+            ClickOn(() => Elements.MarkAllCompletedButton);
+        }
+
         private ToDoItem EditItemLabel(IWebElement item)
         {
             var action = new Actions(Browser.Instance.WebDriver);
