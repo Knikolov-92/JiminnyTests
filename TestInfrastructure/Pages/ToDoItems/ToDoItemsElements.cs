@@ -17,6 +17,8 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
 
         public IWebElement AddToDoItemField => Driver.FindElementWithExplicitWait(By.XPath("//input[@class='new-todo']"));
 
+        public IWebElement AllListButton => Driver.FindElementWithExplicitWait(By.XPath("//a[normalize-space(text())='All']"));
+
         public IWebElement ActiveListButton => Driver.FindElementWithExplicitWait(By.XPath("//a[normalize-space(text())='Active']"));
 
         public IWebElement CompletedListButton => Driver.FindElementWithExplicitWait(By.XPath("//a[normalize-space(text())='Completed']"));

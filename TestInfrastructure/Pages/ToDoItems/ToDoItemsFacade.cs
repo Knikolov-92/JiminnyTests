@@ -51,6 +51,12 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             ClickOn(Elements.GetItemDeleteButton(item));
         }
 
+        public void LoadAllList()
+        {
+            ClickOn(() => Elements.AllListButton);
+            WebElementUtility.WaitForElementsToExistInDom(() => Elements.ToDoList);
+        }
+
         public void LoadActiveList()
         {
             ClickOn(() => Elements.ActiveListButton);

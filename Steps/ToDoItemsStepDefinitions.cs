@@ -56,8 +56,8 @@ namespace Jiminny.UITests.Steps
             page.ClearCompletedItems();
         }
 
-        [Then(@"^The all-to-do list is empty$")]
-        public void TheAllToDoListIsEmpty()
+        [Then(@"^The to-do list is empty$")]
+        public void TheToDoListIsEmpty()
         {
             page.Validate().ListWithItemsIsEmpty();
         }
@@ -105,8 +105,8 @@ namespace Jiminny.UITests.Steps
             page.Validate().TheListHasItems(numberOfItems);
         }
 
-        [Then(@"^The name of the item is contained in the all-to-do list$")]       
-        public void TheNameOfTheItemIsContainedInTheAllToDoList()
+        [Then(@"^The name of the item is contained in the to-do list$")]       
+        public void TheNameOfTheItemIsContainedInTheToDoList()
         {
             var item = listOfToDoItems[0];
 
