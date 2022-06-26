@@ -105,18 +105,18 @@ namespace Jiminny.UITests.Steps
             page.Validate().TheListHasItems(numberOfItems);
         }
 
-        [Then(@"^The name of the first item is contained in the to-do list$")]       
-        public void TheNameOfTheFirstItemIsContainedInTheToDoList()
+        [Then(@"^The name of the item at position (\d+) is contained in the to-do list$")]       
+        public void TheNameOfTheItemAtPositionNIsContainedInTheToDoList(int itemPosition)
         {
-            var item = listOfToDoItems[0];
+            var item = listOfToDoItems[itemPosition];
 
             page.Validate().TheListContainsItemName(item);
         }
 
-        [Then(@"^The name of the first item is contained in the completed-to-do list$")]
-        public void TheNameOfTheFirstItemIsContainedInTheCompletedToDoList()
+        [Then(@"^The name of the item at position (\d+) is contained in the completed-to-do list$")]
+        public void TheNameOfTheItemAtPositionNIsContainedInTheCompletedToDoList(int itemPosition)
         {
-            var item = listOfToDoItems[0];
+            var item = listOfToDoItems[itemPosition];
 
             page.LoadCompletedList();
             page.Validate().TheListContainsItemName(item);
