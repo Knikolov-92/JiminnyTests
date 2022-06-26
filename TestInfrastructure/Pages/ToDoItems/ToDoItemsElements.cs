@@ -33,5 +33,10 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
         {
             return GetElementClass(checkbox);
         }
+
+        public IWebElement GetItemDeleteButton(IWebElement label)
+        {
+            return label.FindElement(By.XPath(".//button[@class='destroy']"));
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Jiminny.UITests.TestInfrastructure.Extensions
         public static void WaitForElementToBeClickable(this IWebElement element)
         {
             var wait = new WebDriverWait(Browser.Instance.WebDriver, TimeSpan.FromSeconds(Timeouts.DEFAULT_TIMEOUT_IN_SECONDS));
-            wait.Until(ExpectedConditions.ElementSelectionStateToBe(element, false));
+            wait.Until(ExpectedConditions.ElementToBeClickable(element));
         }
     }
 }

@@ -3,6 +3,7 @@ using Jiminny.UITests.TestInfrastructure.Helpers;
 using Jiminny.UITests.TestInfrastructure.Managers;
 using Jiminny.UITests.TestInrastructure.Drivers;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 
 namespace Jiminny.UITests.TestInfrastructure.Pages
@@ -30,20 +31,19 @@ namespace Jiminny.UITests.TestInfrastructure.Pages
         protected void NavigateToURL(string url)
         {
             Browser.Instance.WebDriver.Navigate().GoToUrl(url);
-        }
-
-        protected void ClickOn(Func<IWebElement> webElement)
-        {
-            var element = WebElementUtility.WaitForElementToBeDisplayed(webElement);
-
-            element.WaitForElementToBeClickable();
-            element.Click();
-        }
+        }       
 
         protected void ClickOn(IWebElement element)
         {
             element.WaitForElementToBeClickable();
             element.Click();
+        }
+
+        protected void ClickOnWithActions(IWebElement element)
+        {
+            var actions = new Actions(Browser.Instance.WebDriver);
+
+            actions.MoveToElement(element).Click().Perform();
         }
 
         protected void EnterTextInField(Func<IWebElement> element, string text)

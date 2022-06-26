@@ -44,6 +44,12 @@ namespace Jiminny.UITests.Steps
             page.CompleteItemInTheToDoList(itemPosition);
         }
 
+        [When(@"^The item at position (\d+) in the list is deleted")]
+        public void TheItemAtPositionNisDeleted(int itemPosition)
+        {
+            page.DeleteItemInTheToDoList(itemPosition);
+        }
+
         [Then(@"^There are no to-do items in the list$")]
         public void ThereAreNoItemsInTheList()
         {

@@ -39,7 +39,16 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             var items = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
             var item = items.ElementAt(itemPosition);
 
-            ClickOn(Elements.GetItemCheckbox(item));
+            ClickOnWithActions(Elements.GetItemCheckbox(item));
+        }
+
+        public void DeleteItemInTheToDoList(int itemPosition)
+        {
+            var items = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
+            var item = items.ElementAt(itemPosition);
+
+            WebElementUtility.MoveCursorOverElement(item);
+            ClickOn(Elements.GetItemDeleteButton(item));
         }
 
         private ToDoItem EditItemLabel(IWebElement item)

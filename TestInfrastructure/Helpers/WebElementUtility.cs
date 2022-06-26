@@ -1,6 +1,8 @@
 ﻿using Jiminny.UITests.TestInfrastructure.Constants;
+using Jiminny.UITests.TestInfrastructure.Extensions;
 using Jiminny.UITests.TestInrastructure.Drivers;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -170,6 +172,14 @@ namespace Jiminny.UITests.TestInfrastructure.Helpers
             catch (NullReferenceException){}
 
             return doesExist;
+        }
+
+        public static void MoveCursorOverElement(IWebElement element)
+        {
+            var builder = new Actions(Browser.Instance.WebDriver);
+
+            element.WaitForElementToBeClickable();           
+            builder.MoveToElement(element).Build().Perform();
         }
     }
 }
