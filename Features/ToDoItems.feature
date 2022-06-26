@@ -10,13 +10,13 @@ Scenario: Default list of to-do items is empty
 Scenario: Add single item to to-do list
 	When 1 item is added to the to-do list
 	Then The all-to-do list has 1 item
-	And The name of the item is contained in the to-do list
+	And The name of the first item is contained in the to-do list
 	And The counter shows 1 active item
 
 Scenario: Edit an active item
 	When 1 item is added to the to-do list
 	And The item at position 0 in the list is edited
-	Then The name of the item is contained in the to-do list
+	Then The name of the first item is contained in the to-do list
 
 Scenario: Complete an active item
 	When 1 item is added to the to-do list
@@ -54,7 +54,7 @@ Scenario: Edit a completed item
 	When 1 item is added to the to-do list
 	And The item at position 0 in the list is completed
 	And The item at position 0 in the list is edited
-	Then The name of the item is contained in the to-do list
+	Then The name of the first item is contained in the to-do list
 
 Scenario: Add 1 active item and 1 completed item -> clear completed -> completed list is empty -> active list has 1 item
 	When 2 items are added to the to-do list
@@ -63,3 +63,12 @@ Scenario: Add 1 active item and 1 completed item -> clear completed -> completed
 	Then The all-to-do list has 1 item
 	And The active-to-do list has 1 item
 	And The completed-to-do list is empty
+
+Scenario: Add 10 items -> complete first item -> validate lists
+	When 10 items are added to the to-do list
+	And The item at position 0 in the list is completed
+	Then The all-to-do list has 10 items
+	And The active-to-do list has 9 items
+	And The active-to-do list contains the correct items
+	And The completed-to-do list has 1 item
+	And The name of the first item is contained in the completed-to-do list

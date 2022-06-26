@@ -105,13 +105,22 @@ namespace Jiminny.UITests.Steps
             page.Validate().TheListHasItems(numberOfItems);
         }
 
-        [Then(@"^The name of the item is contained in the to-do list$")]       
-        public void TheNameOfTheItemIsContainedInTheToDoList()
+        [Then(@"^The name of the first item is contained in the to-do list$")]       
+        public void TheNameOfTheFirstItemIsContainedInTheToDoList()
         {
             var item = listOfToDoItems[0];
 
             page.Validate().TheListContainsItemName(item);
-        }        
+        }
+
+        [Then(@"^The name of the first item is contained in the completed-to-do list$")]
+        public void TheNameOfTheFirstItemIsContainedInTheCompletedToDoList()
+        {
+            var item = listOfToDoItems[0];
+
+            page.LoadCompletedList();
+            page.Validate().TheListContainsItemName(item);
+        }
 
         [Then(@"^The counter shows (\d+) active item$")]
         [Then(@"^The counter shows (\d+) active items$")]
@@ -124,6 +133,15 @@ namespace Jiminny.UITests.Steps
         public void TheItemAtPositionNisMarkedAsCompleted(int itemPosition)
         {
             page.Validate().TheItemIsMarkedAsCompleted(itemPosition);
+        }
+
+        [Then(@"^The active-to-do list contains the correct items$")]
+        public void TheActiveToDoListContainsTheCorrectItems()
+        {
+            var itemsList = listOfToDoItems;
+
+            page.LoadActiveList();
+            page.Validate().TheListContainsTheCorrectItems(itemsList);
         }
     }
 }

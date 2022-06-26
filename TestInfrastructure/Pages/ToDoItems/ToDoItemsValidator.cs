@@ -1,6 +1,7 @@
 ﻿using Jiminny.UITests.TestInfrastructure.Helpers;
 using Jiminny.UITests.TestInfrastructure.Models;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
@@ -50,6 +51,31 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             var className = Elements.GetItemCheckboxClass(item);
 
             Assert.That(className, Is.EqualTo("todo completed"), "Item name is not marked as 'completed'");
+        }
+
+        public void TheListContainsTheCorrectItems(List<ToDoItem> items)
+        {
+            var toDoList = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
+            List<string> expectedItems = new();
+            List<string> actualItems = new();
+
+            foreach (var toDo in items)
+            {
+                string itemName = toDo.Name;
+                expectedItems.Add(itemName);
+            }
+
+            foreach (var toDo in toDoList)
+            {
+                var item = new ToDoItem()
+                {
+                    Name = Elements.GetItemLabel(toDo).Text
+                };
+
+                actualItems.Add(item.Name);
+            }
+
+            CollectionAssert.IsSubsetOf(actualItems, expectedItems, "Actual list does not contain the expected list of to-do-items");
         }
     }
 }
