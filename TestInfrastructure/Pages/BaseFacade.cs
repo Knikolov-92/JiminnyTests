@@ -39,6 +39,14 @@ namespace Jiminny.UITests.TestInfrastructure.Pages
             element.Click();
         }
 
+        protected void ClickOn(Func<IWebElement> action)
+        {
+            var element = WebElementUtility.WaitForElementToBeDisplayed(action);
+
+            element.WaitForElementToBeClickable();
+            element.Click();
+        }
+
         protected void ClickOnWithActions(IWebElement element)
         {
             var actions = new Actions(Browser.Instance.WebDriver);

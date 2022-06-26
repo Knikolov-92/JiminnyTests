@@ -50,9 +50,23 @@ namespace Jiminny.UITests.Steps
             page.DeleteItemInTheToDoList(itemPosition);
         }
 
-        [Then(@"^There are no to-do items in the list$")]
-        public void ThereAreNoItemsInTheList()
+        [Then(@"^The all-to-do list is empty$")]
+        public void TheAllToDoListIsEmpty()
         {
+            page.Validate().ListWithItemsIsEmpty();
+        }
+
+        [Then(@"^The active-to-do list is empty$")]
+        public void TheActiveToDoListIsEmpty()
+        {
+            page.LoadActiveList();
+            page.Validate().ListWithItemsIsEmpty();
+        }
+
+        [Then(@"^The completed-to-do list is empty$")]
+        public void TheCompletedToDoListIsEmpty()
+        {
+            page.LoadCompletedList();
             page.Validate().ListWithItemsIsEmpty();
         }
 
@@ -62,15 +76,31 @@ namespace Jiminny.UITests.Steps
             page.Validate().ItemsCounterIsNotDisplayed();
         }
 
-        [Then(@"^The list has (\d+) item$")]
-        [Then(@"^The list has (\d+) items$")]
-        public void TheListHasItems(int numberOfItems)
+        [Then(@"^The all-to-do list has (\d+) item$")]
+        [Then(@"^The all-to-do list has (\d+) items$")]
+        public void TheAllToDoListHasItems(int numberOfItems)
         {
             page.Validate().TheListHasItems(numberOfItems);
         }
 
-        [Then(@"^The name of the item is contained in the to-do list$")]       
-        public void TheNameOfTheItemIsContainedInTheToDoList()
+        [Then(@"^The active-to-do list has (\d+) item$")]
+        [Then(@"^The active-to-do list has (\d+) items$")]
+        public void TheActiveToDoListHasItems(int numberOfItems)
+        {
+            page.LoadActiveList();
+            page.Validate().TheListHasItems(numberOfItems);
+        }
+
+        [Then(@"^The completed-to-do list has (\d+) item$")]
+        [Then(@"^The completed-to-do list has (\d+) items$")]
+        public void TheCompletedToDoListHasItems(int numberOfItems)
+        {
+            page.LoadCompletedList();
+            page.Validate().TheListHasItems(numberOfItems);
+        }
+
+        [Then(@"^The name of the item is contained in the all-to-do list$")]       
+        public void TheNameOfTheItemIsContainedInTheAllToDoList()
         {
             var item = listOfToDoItems[0];
 

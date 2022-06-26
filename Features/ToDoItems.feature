@@ -4,19 +4,19 @@ Background:
 	Given Home page is loaded
 
 Scenario: Default list of to-do items is empty
-	Then There are no to-do items in the list
+	Then The all-to-do list is empty
 	And The item counter is not displayed
 	
 Scenario: Add single item to to-do list
 	When 1 item is added to the to-do list
-	Then The list has 1 item
-	And The name of the item is contained in the to-do list
+	Then The all-to-do list has 1 item
+	And The name of the item is contained in the all-to-do list
 	And The counter shows 1 active item
 
 Scenario: Edit an active item
 	When 1 item is added to the to-do list
 	And The item at position 0 in the list is edited
-	Then The name of the item is contained in the to-do list
+	Then The name of the item is contained in the all-to-do list
 
 Scenario: Complete an active item
 	When 1 item is added to the to-do list
@@ -27,5 +27,18 @@ Scenario: Complete an active item
 Scenario: Delete an active item
 	When 1 item is added to the to-do list
 	And The item at position 0 in the list is deleted
-	Then There are no to-do items in the list
+	Then The all-to-do list is empty
 	And The item counter is not displayed
+
+Scenario: Completed list is empty when there are only active items
+	When 1 item is added to the to-do list
+	Then The all-to-do list has 1 item
+	And The active-to-do list has 1 item
+	And The completed-to-do list is empty
+
+Scenario: Active list is empty when there are only completed items
+	When 1 item is added to the to-do list
+	And The item at position 0 in the list is completed
+	Then The all-to-do list has 1 item	
+	And The active-to-do list is empty
+	And The completed-to-do list has 1 item

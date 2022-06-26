@@ -51,6 +51,18 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             ClickOn(Elements.GetItemDeleteButton(item));
         }
 
+        public void LoadActiveList()
+        {
+            ClickOn(() => Elements.ActiveListButton);
+            WebElementUtility.WaitForElementsToExistInDom(() => Elements.ToDoList);
+        }
+
+        public void LoadCompletedList()
+        {
+            ClickOn(() => Elements.CompletedListButton);
+            WebElementUtility.WaitForElementsToExistInDom(() => Elements.ToDoList);
+        }
+
         private ToDoItem EditItemLabel(IWebElement item)
         {
             var action = new Actions(Browser.Instance.WebDriver);
@@ -72,7 +84,5 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
 
             return newItem;
         }
-
-
     }
 }
