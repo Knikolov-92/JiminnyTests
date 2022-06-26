@@ -22,6 +22,24 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             Assert.That(element.Displayed, Is.False, "Items counter is displayed");
         }
 
+        public void DeleteItemButtonIsNotDisplayed(int index)
+        {
+            var elementList = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
+            var element = elementList.ElementAt(index);
+            bool isDisplayed = WebElementUtility.IsElementDisplayed(() => Elements.GetItemDeleteButton(element));
+
+            Assert.That(isDisplayed, Is.False, "Delete-item-button is displayed");
+        }
+
+        public void SelectItemCheckboxIsNotDisplayed(int index)
+        {
+            var elementList = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
+            var element = elementList.ElementAt(index);
+            bool isDisplayed = WebElementUtility.IsElementDisplayed(() => Elements.GetItemCheckbox(element));
+
+            Assert.That(isDisplayed, Is.False, "Select-item-checkbox is displayed");
+        }
+
         public void ItemsCounterShowsCorrectNumberOfItems(int expectedNumber)
         {
             var element = WebElementUtility.WaitForElementToExistInDom(() => Elements.ItemCounter);

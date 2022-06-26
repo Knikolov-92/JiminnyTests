@@ -34,6 +34,14 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             return newItem;
         }
 
+        public void DoubleClickOnItemToBeginEditing(int itemPosition)
+        {
+            var items = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
+            var item = items.ElementAt(itemPosition);
+
+            DoubleClickOnItemInTheList(item);
+        }
+
         public void CompleteItemInTheToDoList(int itemPosition)
         {
             var items = WebElementUtility.WaitForElementsToExistInDom(() => Elements.AllItemsList);
@@ -93,15 +101,14 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
         }
 
         private ToDoItem EditItemLabel(IWebElement item)
-        {
-            var action = new Actions(Browser.Instance.WebDriver);
+        {            
             var newItem = new ToDoItem()
             {
                 Name = Lorem.Sentence()
             };
             var numberOfSymbols = item.Text.Length;
-                        
-            action.DoubleClick(item).Build().Perform();
+
+            DoubleClickOnItemInTheList(item);
             var itemInput = Elements.GetItemLabelInput(item);
 
             for (int i = 0; i < numberOfSymbols; i++)
@@ -112,6 +119,13 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             itemInput.SendKeys(Keys.Enter);
 
             return newItem;
+        }
+
+        private void DoubleClickOnItemInTheList(IWebElement item)
+        {
+            var action = new Actions(Browser.Instance.WebDriver);
+
+            action.DoubleClick(item).Build().Perform();
         }
     }
 }

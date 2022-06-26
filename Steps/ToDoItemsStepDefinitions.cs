@@ -29,6 +29,17 @@ namespace Jiminny.UITests.Steps
             listOfToDoItems = listOfItems;
         }
 
+        
+        [When(@"^(\d+) items with the same name are added to the to-do list$")]
+        public void ItemsWithTheSameNameAreAddedToTheToDoList(int numberOfItems)
+        {
+            string randomName = Lorem.Sentence();
+            var listOfItems = RandomUtility.CreateListOfToDoITems(numberOfItems, randomName);
+
+            page.AddItemsToTheToDoList(listOfItems);
+            listOfToDoItems = listOfItems;
+        }
+
         [When(@"^The item at position (\d+) in the list is edited$")]
         public void TheItemAtPositionNisEdited(int itemPosition)
         {
@@ -36,6 +47,12 @@ namespace Jiminny.UITests.Steps
 
             listOfToDoItems.Clear();
             listOfToDoItems.Add(editedItem);
+        }
+
+        [When(@"^The item at position (\d+) in the list is being edited$")]
+        public void TheItemAtPositionNisBeingEdited(int itemPosition)
+        {
+            page.DoubleClickOnItemToBeginEditing(itemPosition);
         }
 
         [When(@"^The item at position (\d+) in the list is completed")]
@@ -92,6 +109,18 @@ namespace Jiminny.UITests.Steps
         public void TheItemCounterIsNotDisplayed()
         {
             page.Validate().ItemsCounterIsNotDisplayed();
+        }
+
+        [Then(@"^The delete-item-button at position (\d+) is not displayed$")]
+        public void TheDeleteItemButtonIsNotDisplayed(int itemPosition)
+        {
+            page.Validate().DeleteItemButtonIsNotDisplayed(itemPosition);
+        }
+
+        [Then(@"^The select-item-checkbox at position (\d+) is not displayed$")]
+        public void TheSelectItemCheckboxIsNotDisplayed(int itemPosition)
+        {
+            page.Validate().SelectItemCheckboxIsNotDisplayed(itemPosition);
         }
 
         [Then(@"^The all-to-do list has (\d+) item$")]

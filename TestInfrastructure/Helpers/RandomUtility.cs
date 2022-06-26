@@ -21,5 +21,21 @@ namespace Jiminny.UITests.TestInfrastructure.Helpers
 
             return listOfItems;
         }
+
+        public static List<ToDoItem> CreateListOfToDoITems(int numberOfItems, string itemName)
+        {
+            var listOfItems = new List<ToDoItem>();
+
+            for (int i = 0; i < numberOfItems; i++)
+            {
+                var item = new ToDoItem()
+                {
+                    Name = itemName
+                };
+                listOfItems.Add(item);
+            }
+
+            return listOfItems;
+        }
     }
 }

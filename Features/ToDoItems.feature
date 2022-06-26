@@ -104,3 +104,34 @@ Scenario: Add 10 items -> delete all -> validate lists
 	And The items at positions 0 to 9 in the list are deleted
 	Then The to-do list is empty
 	And The item counter is not displayed
+
+Scenario: Add 10 items -> complete all twice -> validate lists
+	When 10 items are added to the to-do list
+	And All items are marked as completed
+	Then The completed-to-do list has 10 items
+	When All items are marked as completed
+	Then The active-to-do list has 10 items
+	And The completed-to-do list is empty
+
+Scenario: Complete an item twice
+	When 1 item is added to the to-do list
+	And The item at position 0 in the list is completed
+	Then The counter shows 0 active items
+	And The completed-to-do list has 1 item
+	When The item at position 0 in the list is completed
+	Then The counter shows 1 active items
+	And The completed-to-do list is empty
+
+Scenario: Add 2 items with the same name to the list
+	When 2 items with the same name are added to the to-do list
+	Then The all-to-do list has 2 items
+	
+Scenario: No delete button is displayed while editing
+	When 1 item is added to the to-do list
+	And The item at position 0 in the list is being edited
+	Then The delete-item-button at position 0 is not displayed
+
+Scenario: No select item checkbox is displayed while editing
+	When 1 item is added to the to-do list
+	And The item at position 0 in the list is being edited
+	Then The select-item-checkbox at position 0 is not displayed

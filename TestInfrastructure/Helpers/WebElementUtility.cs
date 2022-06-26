@@ -174,6 +174,40 @@ namespace Jiminny.UITests.TestInfrastructure.Helpers
             return doesExist;
         }
 
+        public static bool IsElementDisplayed(Func<IWebElement> webElement)
+        {
+            var isDisplayed = false;
+            try
+            {
+                var element = webElement.Invoke();
+                if (element.Displayed)
+                {
+                    isDisplayed = true;
+                }
+                else
+                {
+                    isDisplayed = false;
+                }
+            }
+            catch (StaleElementReferenceException)
+            {
+            }
+            catch (InvalidElementStateException)
+            {
+            }
+            catch (InvalidOperationException)
+            {
+            }
+            catch (NoSuchElementException)
+            {
+            }
+            catch (NullReferenceException)
+            {
+            }
+
+            return isDisplayed;
+        }
+
         public static void MoveCursorOverElement(IWebElement element)
         {
             var builder = new Actions(Browser.Instance.WebDriver);
