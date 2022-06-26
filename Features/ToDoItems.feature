@@ -42,3 +42,10 @@ Scenario: Active list is empty when there are only completed items
 	Then The all-to-do list has 1 item	
 	And The active-to-do list is empty
 	And The completed-to-do list has 1 item
+
+Scenario: Clear completed item
+	When 1 item is added to the to-do list
+	And The item at position 0 in the list is completed
+	And The completed items are cleared
+	Then The all-to-do list is empty
+	And The item counter is not displayed

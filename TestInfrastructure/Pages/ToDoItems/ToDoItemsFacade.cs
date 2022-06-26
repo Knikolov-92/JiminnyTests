@@ -63,6 +63,11 @@ namespace Jiminny.UITests.TestInfrastructure.Pages.ToDoItems
             WebElementUtility.WaitForElementsToExistInDom(() => Elements.ToDoList);
         }
 
+        public void ClearCompletedItems()
+        {
+            ClickOn(() => Elements.ClearCompletedButton);
+        }
+
         private ToDoItem EditItemLabel(IWebElement item)
         {
             var action = new Actions(Browser.Instance.WebDriver);

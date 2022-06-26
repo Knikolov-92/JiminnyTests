@@ -50,6 +50,12 @@ namespace Jiminny.UITests.Steps
             page.DeleteItemInTheToDoList(itemPosition);
         }
 
+        [When(@"^The completed items are cleared")]
+        public void TheCompletedItemsAreCleared()
+        {
+            page.ClearCompletedItems();
+        }
+
         [Then(@"^The all-to-do list is empty$")]
         public void TheAllToDoListIsEmpty()
         {
